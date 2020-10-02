@@ -37,6 +37,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 28
         versionCode flutterVersionCode.toInteger()
+        multiDexEnabled true
         versionName flutterVersionName
     }
 
@@ -53,4 +54,6 @@ flutter {
     source '../..'
 }
 
-aply plugin: 'com.google.gms.google-services'
+
+
+apply plugin: 'com.google.gms.google-services'
