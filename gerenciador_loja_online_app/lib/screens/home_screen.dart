@@ -4,6 +4,7 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:gerenciador_loja_online/blocs/orders_bloc.dart';
 import 'package:gerenciador_loja_online/blocs/user_blocs.dart';
 import 'package:gerenciador_loja_online/tabs/orders_tab.dart';
+import 'package:gerenciador_loja_online/tabs/products_tab.dart';
 import 'package:gerenciador_loja_online/tabs/users_tab.dart';
 class HomeScreen extends StatefulWidget {
   @override
@@ -87,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: <Widget>[
                 UsersTab(),
                 OrdersTab(),
-                Container(color: Colors.deepPurpleAccent)
+                ProductsTab()
               ],
             ),
           ),
