@@ -1,4 +1,6 @@
+import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
+import 'package:gerenciador_loja_online/blocs/user_blocs.dart';
 import 'package:gerenciador_loja_online/tabs/users_tab.dart';
 class HomeScreen extends StatefulWidget {
   @override
@@ -10,12 +12,14 @@ class _HomeScreenState extends State<HomeScreen> {
   PageController _pageController;
   int _page = 0;
 
-
+  UserBloc _userBloc;
   @override
   void initState() {
     super.initState();
 
     _pageController = PageController();
+
+    _userBloc = UserBloc();
   }
 
 
@@ -64,18 +68,21 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       body: SafeArea(
-        child: PageView(
-          controller: _pageController,
-          onPageChanged: (p) {
-            setState(() {
-              _page = p;
-            });
-          },
-          children: <Widget>[
-            UsersTab(),
-            Container(color: Colors.amber),
-            Container(color: Colors.deepPurpleAccent)
-          ],
+        child: BlocProvider<UserBloc>(
+          bloc: _userBloc,
+          child: PageView(
+            controller: _pageController,
+            onPageChanged: (p) {
+              setState(() {
+                _page = p;
+              });
+            },
+            children: <Widget>[
+              UsersTab(),
+              Container(color: Colors.amber),
+              Container(color: Colors.deepPurpleAccent)
+            ],
+          ),
         ),
       )
     );
