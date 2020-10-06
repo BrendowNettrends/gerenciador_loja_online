@@ -1,6 +1,7 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
 import 'package:gerenciador_loja_online/blocs/user_blocs.dart';
+import 'package:gerenciador_loja_online/tabs/orders_tab.dart';
 import 'package:gerenciador_loja_online/tabs/users_tab.dart';
 class HomeScreen extends StatefulWidget {
   @override
@@ -79,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             children: <Widget>[
               UsersTab(),
-              Container(color: Colors.amber),
+              OrdersTab(),
               Container(color: Colors.deepPurpleAccent)
             ],
           ),
