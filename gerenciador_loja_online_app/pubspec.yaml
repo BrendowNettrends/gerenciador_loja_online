@@ -40,6 +40,9 @@ dependencies:
   bloc_pattern: ^1.5.2
   shimmer: ^1.1.1
   flutter_speed_dial: ^1.1.1
+  image_picker: ^0.6.7+11
+  image_cropper: ^1.0.2
+
 
 dev_dependencies:
   flutter_test:

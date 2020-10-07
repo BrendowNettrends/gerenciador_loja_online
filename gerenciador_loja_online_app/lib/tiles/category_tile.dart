@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:gerenciador_loja_online/screens/products_sreen.dart';
+import 'package:gerenciador_loja_online/screens/products_srceen.dart';
 
 class CategoryTile extends StatelessWidget {
 
