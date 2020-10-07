@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gerenciador_loja_online/blocs/product_bloc.dart';
+import 'package:gerenciador_loja_online/widgets/images_widget.dart';
 
 class ProductScreen extends StatefulWidget {
 
@@ -68,6 +69,14 @@ _ProductScreenState(String categoryID, DocumentSnapshot product) :
             return ListView(
               padding: EdgeInsets.all(16),
               children: <Widget>[
+                Text(
+                  "Imagens",
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 12,
+                  ),
+                ),
+                ImagesWidget(),
                 TextFormField(
                   initialValue: snapshot.data["title"],
                   style: _filedStyle,
