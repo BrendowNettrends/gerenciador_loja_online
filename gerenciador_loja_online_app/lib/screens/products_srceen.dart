@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gerenciador_loja_online/blocs/product_bloc.dart';
+import 'package:gerenciador_loja_online/validators/product_validator.dart';
 import 'package:gerenciador_loja_online/widgets/images_widget.dart';
 
 class ProductScreen extends StatefulWidget {
@@ -14,7 +15,7 @@ class ProductScreen extends StatefulWidget {
   _ProductScreenState createState() => _ProductScreenState(categoryID, product);
 }
 
-class _ProductScreenState extends State<ProductScreen> {
+class _ProductScreenState extends State<ProductScreen>  with ProductValidator {
   final ProductBloc _productBloc;
 
   final  _formKey = GlobalKey<FormState>();
@@ -55,7 +56,7 @@ _ProductScreenState(String categoryID, DocumentSnapshot product) :
           IconButton(
               icon: Icon(Icons.save),
               onPressed: () {
-
+                _formKey.currentState.validate();
               }
           ),
         ],
@@ -79,31 +80,31 @@ _ProductScreenState(String categoryID, DocumentSnapshot product) :
                 ImagesWidget(
                   context: context,
                   initialValue: snapshot.data["images"],
-                  onSaved: (l){},
-                  validator: (l){},
+                  onSaved: _productBloc.saveImages,
+                  validator: validateImages,
                 ),
                 TextFormField(
                   initialValue: snapshot.data["title"],
                   style: _filedStyle,
                   decoration: _buildDecoration("Título"),
-                  onSaved: (t){},
-                  validator: (t){},
+                  onSaved: _productBloc.saveTitle,
+                  validator: validateTitle,
                 ),
                 TextFormField(
                   initialValue: snapshot.data["description"],
                   style: _filedStyle,
                   maxLines: 6,
                   decoration: _buildDecoration("Descrição"),
-                  onSaved: (t){},
-                  validator: (t){},
+                  onSaved: _productBloc.saveDescription,
+                  validator: validateDescription,
                 ),
                 TextFormField(
                   initialValue: snapshot.data["price"]?.toStringAsFixed(2),
                   style: _filedStyle,
                   decoration: _buildDecoration("Preço"),
                   keyboardType: TextInputType.numberWithOptions(decimal: true),
-                  onSaved: (t){},
-                  validator: (t){},
+                  onSaved: _productBloc.savePrice,
+                  validator: validatePrice,
                 ),
               ],
             );
