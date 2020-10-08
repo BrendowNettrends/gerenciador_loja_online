@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gerenciador_loja_online/blocs/product_bloc.dart';
 import 'package:gerenciador_loja_online/validators/product_validator.dart';
 import 'package:gerenciador_loja_online/widgets/images_widget.dart';
+import 'package:gerenciador_loja_online/widgets/products_sizes.dart';
 
 class ProductScreen extends StatefulWidget {
 
@@ -136,6 +137,22 @@ _ProductScreenState(String categoryID, DocumentSnapshot product) :
                       onSaved: _productBloc.savePrice,
                       validator: validatePrice,
                     ),
+                    Text(
+                      "Tamanhos",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 12,
+                      ),
+                    ),
+                    ProductsSizes(
+                      initialValue: snapshot.data["sizes"],
+                      onSaved: (s) {
+
+                      },
+                      validator: (s) {
+
+                      }
+                    )
                   ],
                 );
               }
