@@ -85,7 +85,10 @@ class _EditCategoryDialogState extends State<EditCategoryDialog> {
                           return FlatButton(
                             child: Text("Excluir"),
                             textColor: Colors.red,
-                            onPressed: snapshot.data ? () {} : null,
+                            onPressed: snapshot.data ? () {
+                              _categoryBloc.delete();
+                              Navigator.of(context).pop();
+                            } : null,
                           );
                         }
                     ),
@@ -94,7 +97,10 @@ class _EditCategoryDialogState extends State<EditCategoryDialog> {
                       builder: (context, snapshot) {
                         return FlatButton(
                           child: Text("Salvar"),
-                          onPressed: snapshot.hasData ? (){} : null,
+                          onPressed: snapshot.hasData ? () async {
+                            await _categoryBloc.saveData();
+                            Navigator.of(context).pop();
+                          } : null,
                         );
                       }
                     )
